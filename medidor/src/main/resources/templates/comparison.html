@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Superhero Comparison</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
+        }
+        .winner-card {
+            border: 3px solid gold;
+            box-shadow: 0 0 10px gold;
+        }
+    </style>
+</head>
+<body class="bg-dark text-white">
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">Superhero Battle</h1>
+        
+        <div class="row">
+            <!-- Card Héroe 1 -->
+            <div class="col-md-6 mb-4">
+                <div th:class="${winner == hero1} ? 'card winner-card' : 'card'" 
+                     style="background-color: #343a40;">
+                    <img th:src="${hero1.image.url}" class="card-img-top" alt="Hero 1">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${hero1.name}"></h5>
+                        <p class="card-text" th:text="${hero1.biography.fullName}"></p>
+                        <p class="card-text"><small th:text="${hero1.biography.publisher}"></small></p>
+                        <hr>
+                        <h6>Power Stats:</h6>
+                        <ul class="list-unstyled">
+                            <li>Intelligence: <span th:text="${hero1.powerstats.intelligence}"></span></li>
+                            <li>Strength: <span th:text="${hero1.powerstats.strength}"></span></li>
+                            <li>Speed: <span th:text="${hero1.powerstats.speed}"></span></li>
+                            <li>Durability: <span th:text="${hero1.powerstats.durability}"></span></li>
+                            <li>Power: <span th:text="${hero1.powerstats.power}"></span></li>
+                            <li>Combat: <span th:text="${hero1.powerstats.combat}"></span></li>
+                        </ul>
+                        <h5>Total Power: <span th:text="${hero1.getTotalPower()}"></span></h5>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Héroe 2 -->
+            <div class="col-md-6 mb-4">
+                <div th:class="${winner == hero2} ? 'card winner-card' : 'card'" 
+                     style="background-color: #343a40;">
+                    <img th:src="${hero2.image.url}" class="card-img-top" alt="Hero 2">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${hero2.name}"></h5>
+                        <p class="card-text" th:text="${hero2.biography.fullName}"></p>
+                        <p class="card-text"><small th:text="${hero2.biography.publisher}"></small></p>
+                        <hr>
+                        <h6>Power Stats:</h6>
+                        <ul class="list-unstyled">
+                            <li>Intelligence: <span th:text="${hero2.powerstats.intelligence}"></span></li>
+                            <li>Strength: <span th:text="${hero2.powerstats.strength}"></span></li>
+                            <li>Speed: <span th:text="${hero2.powerstats.speed}"></span></li>
+                            <li>Durability: <span th:text="${hero2.powerstats.durability}"></span></li>
+                            <li>Power: <span th:text="${hero2.powerstats.power}"></span></li>
+                            <li>Combat: <span th:text="${hero2.powerstats.combat}"></span></li>
+                        </ul>
+                        <h5>Total Power: <span th:text="${hero2.getTotalPower()}"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-3">
+            <a href="/" class="btn btn-primary">New Battle</a>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
