@@ -2,7 +2,7 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 # Establece directorio de trabajo
-WORKDIR /app
+WORKDIR /medidor
 
 # Copia el contenido del proyecto
 COPY . .
@@ -14,13 +14,13 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21-jdk
 
 # Establece directorio de trabajo
-WORKDIR /app
+WORKDIR /medidor
 
 # Expone el puerto 8080
 EXPOSE 8080
 
 # Copia el JAR generado
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /medidor/target/*.jar app.jar
 
 # Establece el comando para ejecutar el JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
